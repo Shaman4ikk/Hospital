@@ -2,6 +2,8 @@ package project.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
+import lombok.Getter;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.List;
@@ -13,8 +15,6 @@ import java.util.List;
 public class Patient {
 
     @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "first_name")
@@ -30,7 +30,7 @@ public class Patient {
     private PatientInfo patientInfo;
 
     private List<Medicine> medicine;
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany
     @JoinTable(name = "patients_medicine",
             joinColumns = @JoinColumn(name = "patient_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "medicine_id",
@@ -39,18 +39,19 @@ public class Patient {
         return medicine;
     }
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "patient_info")
+    @OneToOne
+    @JoinColumn(name = "patient_info", referencedColumnName = "id")
     public PatientInfo getPatientInfo() {
         return patientInfo;
     }
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", nullable = false)
     public Long getId() {
         return id;
     }
-
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "doctors_id")
     public Doctor getDoctor() {
         return doctor;

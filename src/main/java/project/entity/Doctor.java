@@ -13,9 +13,6 @@ import java.io.Serializable;
 public class Doctor implements Serializable {
 
     @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id",unique=true, nullable = false)
     private Long id;
 
     @Column(name = "first_name")
@@ -25,6 +22,8 @@ public class Doctor implements Serializable {
     private String lastName;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id",unique=true, nullable = false)
     public Long getId() {
         return id;
     }

@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import project.dto.PatientDTO;
-import project.servicesentity.PatientService;
+import project.services.PatientService;
 
 import java.util.List;
 

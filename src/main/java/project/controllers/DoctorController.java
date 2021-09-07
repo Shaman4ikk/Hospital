@@ -5,13 +5,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import project.dto.DoctorDTO;
-import project.servicesentity.DoctorService;
+import project.services.DoctorService;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/doctors")
-public class    DoctorController {
+public class DoctorController {
 
     private final DoctorService doctorService;
 
@@ -33,6 +33,7 @@ public class    DoctorController {
     @PostMapping("")
     public ResponseEntity<DoctorDTO> create(@RequestBody DoctorDTO doctor){
         doctorService.create(doctor);
+        Object o = new Object();
         return new ResponseEntity<>(doctor, HttpStatus.OK);
     }
 

@@ -11,7 +11,7 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    password: stargame19941995
+    password: 12345dsh
     url: jdbc:mysql://localhost:3306/medicine?useUnicode=true&serverTimezone=UTC&characterEncoding=UTF-8
     username: root
   jpa:
@@ -20,6 +20,3 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
-sonar:
-  login: admin
-  password: 12345

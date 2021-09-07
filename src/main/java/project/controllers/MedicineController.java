@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import project.dto.MedicineDTO;
-import project.servicesentity.MedicineService;
+import project.services.MedicineService;
 
 import java.util.List;
 
@@ -27,7 +27,7 @@ public class MedicineController {
 
     @GetMapping("/id={id}")
     public ResponseEntity<MedicineDTO> getMedicineById(@PathVariable Long id){
-        return new ResponseEntity<>(medicineService.getMedicineById(id), HttpStatus.OK );
+        return new ResponseEntity<>(medicineService.getMedicineByIdDTO(id), HttpStatus.OK );
     }
     @PostMapping
     public ResponseEntity<MedicineDTO> create(@RequestBody MedicineDTO medicine){
