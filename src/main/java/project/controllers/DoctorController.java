@@ -33,7 +33,6 @@ public class DoctorController {
     @PostMapping("")
     public ResponseEntity<DoctorDTO> create(@RequestBody DoctorDTO doctor){
         doctorService.create(doctor);
-        Object o = new Object();
         return new ResponseEntity<>(doctor, HttpStatus.OK);
     }
 
@@ -42,9 +41,11 @@ public class DoctorController {
         doctorService.update(doctor);
     }
 
-    @DeleteMapping("")
-    public void delete(@RequestBody DoctorDTO doctor){
-        doctorService.delete(doctor);
+    @DeleteMapping("id={id}")
+    @ResponseBody
+    public void delete(@PathVariable Long id){
+        System.out.println(id);
+        doctorService.delete(id);
     }
 
 }

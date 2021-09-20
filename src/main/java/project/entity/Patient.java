@@ -2,8 +2,6 @@ package project.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
-import lombok.Getter;
-import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.List;
@@ -23,9 +21,7 @@ public class Patient {
     @Column(name = "last_name")
     private String lastName;
 
-
     private Doctor doctor;
-
 
     private PatientInfo patientInfo;
 

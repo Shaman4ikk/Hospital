@@ -8,7 +8,7 @@ public interface PatientService {
 
     List<PatientDTO> getPatients();
     PatientDTO getPatientById(Long id);
-    void create(PatientDTO patient);
-    void update(PatientDTO patient);
-    void delete(PatientDTO patient);
+    PatientDTO create(PatientDTO patient);
+    boolean update(PatientDTO patient);
+    boolean delete(PatientDTO patient);
 }

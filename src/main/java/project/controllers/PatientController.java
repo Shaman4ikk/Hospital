@@ -25,15 +25,14 @@ public class PatientController {
         return new ResponseEntity<>(patientService.getPatients(), HttpStatus.OK);
     }
 
-    @GetMapping("/id={id}")
+    @GetMapping("/{id}")
     public ResponseEntity<PatientDTO> getPatientById(@PathVariable Long id){
         return new ResponseEntity<>(patientService.getPatientById(id), HttpStatus.OK);
     }
 
     @PostMapping
     public ResponseEntity<PatientDTO> create(@RequestBody PatientDTO patient){
-        patientService.create(patient);
-        return new ResponseEntity<>(patient, HttpStatus.OK);
+        return new ResponseEntity<>(patientService.create(patient), HttpStatus.OK);
     }
 
     @PutMapping
