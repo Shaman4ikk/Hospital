@@ -20,6 +20,7 @@ import project.services.PatientInfoService;
 import project.services.PatientService;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class PatientServiceImpl implements PatientService {
@@ -97,6 +98,12 @@ public class PatientServiceImpl implements PatientService {
         logger.log(Level.INFO, "Remove patient");
         patientRepository.delete(patientMapper.dtoToPatient(patient));
         return true;
+    }
+
+    @Override
+    public List<PatientDTO> getPatientsByDoctorId(Long id) {
+        logger.log(Level.INFO, "Get Patient be DoctorId");
+        return patientMapper.patientsToDTO(patientRepository.findAll().stream().filter(r -> r.getDoctor().getId().equals(id)).collect(Collectors.toList()));
     }
 
 }

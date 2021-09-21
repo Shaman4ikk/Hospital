@@ -44,7 +44,6 @@ public class DoctorController {
     @DeleteMapping("id={id}")
     @ResponseBody
     public void delete(@PathVariable Long id){
-        System.out.println(id);
         doctorService.delete(id);
     }
 

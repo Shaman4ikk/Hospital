@@ -7,9 +7,11 @@ import org.springframework.transaction.annotation.Transactional;
 import project.dto.DoctorDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import project.dto.PatientDTO;
 import project.entity.Doctor;
 import project.mappers.DoctorMapper;
 import project.repositories.DoctorRepository;
+import project.repositories.PatientRepository;
 import project.services.DoctorService;
 
 import java.util.List;
@@ -19,12 +21,14 @@ public class DoctorServiceImpl implements DoctorService {
 
     private final DoctorMapper doctorMapper;
     private final DoctorRepository doctorRepository;
+    private final PatientServiceImpl patientRepository;
     private final Logger logger = LogManager.getLogger(DoctorServiceImpl.class);
 
     @Autowired
-    public DoctorServiceImpl(DoctorRepository doctorRepository, DoctorMapper doctorMappers){
+    public DoctorServiceImpl(DoctorRepository doctorRepository, DoctorMapper doctorMappers, PatientServiceImpl patientRepository){
         this.doctorRepository = doctorRepository;
         this.doctorMapper = doctorMappers;
+        this.patientRepository = patientRepository;
     }
 
     @Override
@@ -61,6 +65,10 @@ public class DoctorServiceImpl implements DoctorService {
     @Transactional
     public void delete(Long id){
         logger.log(Level.INFO, "Remove doctor");
+        List<PatientDTO> patientDTOS = patientRepository.getPatientsByDoctorId(id);
+        for(PatientDTO patientDTO: patientDTOS){
+            patientRepository.delete(patientDTO);
+        }
         doctorRepository.delete(doctorRepository.getById(id));
     }
 }
