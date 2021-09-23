@@ -10,6 +10,6 @@ public interface PatientService {
     PatientDTO getPatientById(Long id);
     PatientDTO create(PatientDTO patient);
     boolean update(PatientDTO patient);
-    boolean delete(PatientDTO patient);
+    boolean delete(Long id);
     List<PatientDTO> getPatientsByDoctorId(Long id);
 }

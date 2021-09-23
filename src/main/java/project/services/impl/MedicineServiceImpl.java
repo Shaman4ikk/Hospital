@@ -73,9 +73,9 @@ public class MedicineServiceImpl implements MedicineService {
 
     @Override
     @Transactional
-    public void delete(MedicineDTO medicine) {
+    public void delete(Long id) {
         logger.log(Level.INFO, "Remove medicine");
-        medicineRepository.delete(medicineMapper.dtoToMedicine(medicine));
+        medicineRepository.delete(medicineRepository.getById(id));
     }
 
 }

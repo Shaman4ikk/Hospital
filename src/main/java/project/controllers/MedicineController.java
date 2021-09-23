@@ -40,9 +40,9 @@ public class MedicineController {
         medicineService.update(medicine);
     }
 
-    @DeleteMapping
-    public void delete(@RequestBody MedicineDTO medicine){
-        medicineService.delete(medicine);
+    @DeleteMapping("/id={id}")
+    public void delete(@PathVariable Long id){
+        medicineService.delete(id);
     }
 
 }

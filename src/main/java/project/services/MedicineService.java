@@ -12,5 +12,5 @@ public interface MedicineService {
     List<MedicineDTO> getMedicine();
     Medicine create(MedicineDTO medicine);
     void update(MedicineDTO medicine);
-    void delete(MedicineDTO medicine);
+    void delete(Long id);
 }

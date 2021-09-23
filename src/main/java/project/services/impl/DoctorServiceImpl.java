@@ -21,14 +21,14 @@ public class DoctorServiceImpl implements DoctorService {
 
     private final DoctorMapper doctorMapper;
     private final DoctorRepository doctorRepository;
-    private final PatientServiceImpl patientRepository;
+//    private final PatientServiceImpl patientRepository;
     private final Logger logger = LogManager.getLogger(DoctorServiceImpl.class);
 
     @Autowired
-    public DoctorServiceImpl(DoctorRepository doctorRepository, DoctorMapper doctorMappers, PatientServiceImpl patientRepository){
+    public DoctorServiceImpl(DoctorRepository doctorRepository, DoctorMapper doctorMappers){
         this.doctorRepository = doctorRepository;
         this.doctorMapper = doctorMappers;
-        this.patientRepository = patientRepository;
+//        this.patientRepository = patientRepository;
     }
 
     @Override
@@ -65,10 +65,10 @@ public class DoctorServiceImpl implements DoctorService {
     @Transactional
     public void delete(Long id){
         logger.log(Level.INFO, "Remove doctor");
-        List<PatientDTO> patientDTOS = patientRepository.getPatientsByDoctorId(id);
-        for(PatientDTO patientDTO: patientDTOS){
-            patientRepository.delete(patientDTO);
-        }
+//        List<PatientDTO> patientDTOS = patientRepository.getPatientsByDoctorId(id);
+//        for(PatientDTO patientDTO: patientDTOS){
+//            patientRepository.delete(patientDTO);
+//        }
         doctorRepository.delete(doctorRepository.getById(id));
     }
 }

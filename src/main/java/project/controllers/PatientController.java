@@ -40,8 +40,8 @@ public class PatientController {
         patientService.update(patient);
     }
 
-    @DeleteMapping
-    public void delete(@RequestBody PatientDTO patient){
-        patientService.delete(patient);
+    @DeleteMapping("id={id}")
+    public void delete(@PathVariable Long id){
+        patientService.delete(id);
     }
 }

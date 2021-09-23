@@ -2,6 +2,8 @@ package project.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.util.List;
@@ -35,6 +37,7 @@ public class Patient {
         return medicine;
     }
 
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @OneToOne
     @JoinColumn(name = "patient_info", referencedColumnName = "id")
     public PatientInfo getPatientInfo() {
@@ -47,6 +50,8 @@ public class Patient {
     public Long getId() {
         return id;
     }
+
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @ManyToOne
     @JoinColumn(name = "doctors_id")
     public Doctor getDoctor() {
