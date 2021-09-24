@@ -58,9 +58,9 @@ public class PatientInfoServiceImpl implements PatientInfoService {
 
     @Override
     @Transactional
-    public void delete(PatientInfoDTO patientInfo){
+    public void delete(Long id){
         logger.log(Level.INFO, "Remove patients info");
-        patientInfoRepository.delete(patientInfoMapper.dtoToPatientInfo(patientInfo));
+        patientInfoRepository.delete(patientInfoRepository.getById(id));
     }
 
 }

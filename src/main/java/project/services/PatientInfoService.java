@@ -10,5 +10,5 @@ public interface PatientInfoService {
     PatientInfoDTO getPatientInfoById(Long id);
     PatientInfoDTO create(PatientInfoDTO patientInfo);
     void update(PatientInfoDTO patientInfo);
-    void delete(PatientInfoDTO patientInfo);
+    void delete(Long id);
 }

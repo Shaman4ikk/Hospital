@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import project.dto.PatientDTO;
 import project.services.PatientService;
 
+import java.util.Arrays;
 import java.util.List;
 
 @RestController

@@ -41,8 +41,8 @@ public class PatientInfoController {
         patientInfoService.update(patientInfo);
     }
 
-    @DeleteMapping
-    public void delete(@RequestBody PatientInfoDTO patientInfo){
-        patientInfoService.delete(patientInfo);
+    @DeleteMapping("id={id}")
+    public void delete(@PathVariable Long id){
+        patientInfoService.delete(id);
     }
 }
