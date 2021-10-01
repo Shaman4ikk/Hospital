@@ -42,5 +42,4 @@ public class Patient {
             inverseJoinColumns = @JoinColumn(name = "medicine_id",
                     referencedColumnName = "id"))
     private List<Medicine> medicine;
-
 }

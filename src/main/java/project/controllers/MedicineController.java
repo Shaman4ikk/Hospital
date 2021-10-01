@@ -41,8 +41,12 @@ public class MedicineController {
     }
 
     @DeleteMapping("/id={id}")
-    public void delete(@PathVariable Long id){
-        medicineService.delete(id);
+    public ResponseEntity<Void> delete(@PathVariable Long id){
+        try {
+            medicineService.delete(id);
+        } catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return new ResponseEntity<>(HttpStatus.OK);
     }
-
 }

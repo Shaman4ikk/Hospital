@@ -88,7 +88,7 @@ public class PatientServiceImpl implements PatientService {
         logger.log(Level.INFO, "Update patient");
         if(patientRepository.existsById(patient.getId())){
             patientInfoService.update(patient.getPatientInfo());
-            patientMapper.patientToDTO(patientRepository.save(patientMapper.dtoToPatient(patient)));
+            patientRepository.save(patientMapper.dtoToPatient(patient));
             return true;
         } return false;
     }
@@ -97,6 +97,7 @@ public class PatientServiceImpl implements PatientService {
     @Transactional
     public boolean delete(Long id) {
         logger.log(Level.INFO, "Remove patient");
+        patientInfoService.delete(id);
         patientRepository.delete(patientMapper.dtoToPatient(getPatientById(id)));
         return true;
     }
