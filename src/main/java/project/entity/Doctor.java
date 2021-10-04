@@ -14,11 +14,8 @@ import java.io.Serializable;
 public class Doctor implements Serializable {
 
     @Id
-    @GeneratedValue(generator = "sequence", strategy = GenerationType.SEQUENCE)
-    @GenericGenerator(name = "sequence", strategy = "sequence", parameters = {
-            @org.hibernate.annotations.Parameter(name = "sequenceName", value = "sequence"),
-            @org.hibernate.annotations.Parameter(name = "allocationSize", value = "1"),
-    })
+    @GeneratedValue(generator = "doctor_sq", strategy = GenerationType.SEQUENCE)
+    @GenericGenerator(name = "doctor_sq", strategy = "increment")
     @Column(name = "id", unique = true, nullable = false)
     private Long id;
 

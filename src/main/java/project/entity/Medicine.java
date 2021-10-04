@@ -13,8 +13,8 @@ import javax.persistence.*;
 public class Medicine {
 
     @Id
-    @GeneratedValue(generator = "doctor_sq", strategy = GenerationType.SEQUENCE)
-    @GenericGenerator(name = "doctor_sq", strategy = "increment")
+    @GeneratedValue(generator = "medicine_sq", strategy = GenerationType.SEQUENCE)
+    @GenericGenerator(name = "medicine_sq", strategy = "increment")
     @Column(name = "id")
     private Long id;
 

@@ -103,6 +103,7 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
+    @Transactional
     public List<PatientDTO> getPatientsByDoctorId(Long id) {
         logger.log(Level.INFO, "Get Patient be DoctorId");
         return patientMapper.patientsToDTO(patientRepository.findAll().stream().filter(r -> r.getDoctor().getId().equals(id)).collect(Collectors.toList()));
